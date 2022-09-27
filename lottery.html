@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function rand(min, max) {
+            let random = Math.round(Math.random() * max);
+            if (min <= random && random <= max) {
+                return random;
+            }
+            else {
+                return rand(min, max);
+            }
+        }
+
+        let count = 0;
+        let checkpoint = [];
+        while (count <= 5) {
+            let temp = rand(1, 38);
+            const checktemp = checkpoint.some(function (value) {
+                return value == temp;
+            });
+            if (checktemp == false) {
+                checkpoint[count] = temp;
+                count++;
+            }
+        }
+        document.write('A區:')
+        for (let j = 0; j < 6; j++) {
+            document.write(`${checkpoint[j]} `);
+        }
+        document.write('<br>');
+        document.write(`B區:${rand(1, 8)}`);
+
+        // 第一種作法
+        // const groupA = [];
+        // for (let i = 0; i < 6; i++) {
+        //     const num = rand(1, 38);
+        //     if (groupA.incluese(num)) {
+        //         i--;
+        //     } else {
+        //         gropuA.push(num);
+        //     }
+        // }
+
+        // 第二種做法
+        // const numbers = [];
+        // for (let i = 1; i <= 38; i++) {
+        //     number.push(i);
+        // }
+        // for (let i = 0; i < 6; i++) {
+        //     const index = rand(0, numbers.length - 1);
+        //     groupA.push(numbers[index]);
+        //     把該顆球拿掉
+        //     numbers.splice(index, 1);
+        // }
+    </script>
+</body>
+
+</html>
